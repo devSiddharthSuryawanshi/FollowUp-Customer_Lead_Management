@@ -1,0 +1,27 @@
+# Core dependencies
+langchain>=0.1.0
+langchain-huggingface>=0.0.5
+python-dotenv>=1.0.0
+
+# Hugging Face and ML dependencies
+transformers>=4.36.0
+torch>=2.1.0
+scikit-learn>=1.6.0
+pandas>=2.1.0
+numpy>=1.24.0
+
+# NLP specific
+sentencepiece>=0.1.99
+protobuf>=4.25.1
+
+# Utilities
+tqdm>=4.66.0
+requests>=2.31.0 
+
+xgboost>=1.7.0
+
+
+
+fastapi
+
+sqlalchemy

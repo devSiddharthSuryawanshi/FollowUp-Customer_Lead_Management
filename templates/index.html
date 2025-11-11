@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lead Scoring Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .lead-card { background: white; padding: 20px; margin: 20px 0; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { margin-top: 0; }
+        .tag { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; margin-right: 5px; }
+        .hot { background-color: #ffcccb; }
+        .warm { background-color: #fff3cd; }
+        .cold { background-color: #d1ecf1; }
+        .positive { color: green; }
+        .negative { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Lead Scoring Dashboard</h1>
+
+    {% for lead in leads %}
+    <div class="lead-card">
+        <h2>{{ lead.name }} 
+            {% if lead.score_label %}
+                <span class="tag {{ lead.score_label|lower }}">{{ lead.score_label }}</span>
+            {% endif %}
+        </h2>
+        <p><strong>Location:</strong> {{ lead.location }} | <strong>Industry:</strong> {{ lead.industry }} | <strong>Role:</strong> {{ lead.job_role }}</p>
+        <p><strong>Company Size:</strong> {{ lead.company_size }} | <strong>Age:</strong> {{ lead.age }}</p>
+        <p><strong>Engagement:</strong> Visits {{ lead.website_visits }}, Opens {{ lead.email_opens }}, CTR {{ lead.click_through_rate }}, Time {{ lead.time_spent_on_site }} mins</p>
+        <p><strong>Past Purchases:</strong> {{ lead.past_purchases }} | <strong>Responses:</strong> {{ lead.inquiry_responses }}</p>
+
+        {% if lead.sentiment_score is not none and lead.sentiment_label is not none %}
+        <p><strong>Sentiment:</strong> 
+            <span class="{{ 'positive' if lead.sentiment_score > 0 else 'negative' }}">
+                {{ lead.sentiment_label }} ({{ "%.2f"|format(lead.sentiment_score) }})
+            </span>
+        </p>
+        {% endif %}
+
+        {% if lead.intent_label is not none %}
+        <p><strong>Intent:</strong> {{ lead.intent_label }}</p>
+        {% endif %}
+
+        {% if lead.score is not none %}
+        <p><strong>Lead Score:</strong> {{ "%.2f"|format(lead.score) }}</p>
+        {% endif %}
+
+        <p><strong>Original Message:</strong> {{ lead.message }}</p>
+
+        {% if lead.followup is not none %}
+        <h3>Follow-Up Message:</h3>
+        <p>{{ lead.followup }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>

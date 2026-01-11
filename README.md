@@ -28,9 +28,9 @@ This project streamlines the sales enquiry and follow-up process by leveraging:
 ## 🛠️ Tech Stack
 | Layer       | Technologies Used                                          |
 | ----------- | ---------------------------------------------------------- |
-| Frontend    | React.js / Bootstrap / Streamlit                           |
-| Backend API | FastAPI (preferred)                    |
+| Frontend    | React.js                          
+| Backend API | FastAPI                 
 | ML/NLP      | scikit-learn, XGBoost, Hugging Face Transformers, TextBlob |
 | GenAI       | LangChain + Hugging Face (Zephyr-7B)                       |
-| Database    | PostgreSQL (production), SQLite (development)              |
+| Database    | SQLite (development)              
 | DevOps      | Git, Hugging Face Hub, .env Token Management               |
